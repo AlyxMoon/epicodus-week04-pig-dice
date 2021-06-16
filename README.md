@@ -37,7 +37,7 @@ Overall game loop:
 ```
 Test: A newly created GameManager class starts with correct properties initialized
 Code: new GameManager()
-Expected: GameManager { activePlayer: 0, players: [{ score: 0 }, { score: 0} ]}
+Expected: GameManager { activePlayer: 0, players: [{ scoreCurrent: 0 }, { scoreCurrent: 0} ]}
 ```
 
 #### Describe GameManager.setActivePlayer ()
@@ -71,7 +71,7 @@ Test: GameManager.addScoreToPlayer(0, 10) adds 10 points to first player
 Code:
 const gameManager = new GameManager()
 gameManager.addScoreToPlayer(0, 10)
-Expected: gameManager.players[0].score === 10
+Expected: gameManager.players[0].scoreCurrent === 10
 ```
 
 ```
@@ -79,7 +79,23 @@ Test: GameManager.addScoreToPlayer(1, 5) adds 5 points to second player
 Code:
 const gameManager = new GameManager()
 gameManager.addScoreToPlayer(1, 5)
-Expected: gameManager.players[1].score === 5
+Expected: gameManager.players[1].scoreCurrent === 5
+```
+
+```
+Test: GameManager.setLastRollForPlayer(0, 2) sets a roll of 2 for player 1
+Code:
+const gameManager = new GameManager()
+gameManager.setLastRollForPlayer(0, 2)
+Expected: gameManager.players[0].lastRoll === 2
+```
+
+```
+Test: GameManager.setLastRollForPlayer(1, 6) sets a roll of 6 for player 2
+Code:
+const gameManager = new GameManager()
+gameManager.setLastRollForPlayer(1, 6)
+Expected: gameManager.players[1].lastRoll === 6
 ```
 
 ```

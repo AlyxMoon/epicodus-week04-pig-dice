@@ -2,8 +2,8 @@ class GameManager {
   constructor () {
     this.activePlayer = 0
     this.players = [
-      { score: 0 },
-      { score: 0 },
+      { scoreCurrent: 0, scoreTotal: 0 },
+      { scoreCurrent: 0, scoreTotal: 0 },
     ]
   }
 
@@ -13,8 +13,12 @@ class GameManager {
     }
   }
 
-  addScoreToPlayer(player, score) {
-    this.players[player].score += score
+  addCurrentScoreForPlayer(player, score) {
+    this.players[player].scoreCurrent += score
+  }
+
+  setLastRollForPlayer (player, roll) {
+    this.players[player].lastRoll = roll
   }
 
   rollDice () {

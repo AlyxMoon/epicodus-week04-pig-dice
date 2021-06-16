@@ -7,3 +7,7 @@ dl {
 dt {
   text-align: right;
 }
+
+dd {
+  margin: 0;
+}

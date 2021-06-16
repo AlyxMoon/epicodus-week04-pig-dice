@@ -39,16 +39,16 @@ const tests = [
     const expected = { 
       activePlayer: 0, 
       players: [
-        { score: 0 },
-        { score: 0 },
+        { scoreCurrent: 0 },
+        { scoreCurrent: 0 },
       ],
     }
 
     let isValid = true
     isValid = isValid && actual.activePlayer === expected.activePlayer
     isValid = isValid && actual.players.length === expected.players.length
-    isValid = isValid && actual.players[0].score === expected.players[0].score
-    isValid = isValid && actual.players[1].score === expected.players[1].score
+    isValid = isValid && actual.players[0].scoreCurrent === expected.players[0].scoreCurrent
+    isValid = isValid && actual.players[1].scoreCurrent === expected.players[1].scoreCurrent
 
     logResult(actual, expected, isValid)
   },
@@ -90,21 +90,39 @@ const tests = [
   },
 
   () => {
-    logDescription('GameManager.addScoreToPlayer(0, 10) adds 10 points to first player')
+    logDescription('GameManager.addCurrentScoreForPlayer(0, 10) adds 10 points to first player')
     
     const gameManager = new GameManager()
-    gameManager.addScoreToPlayer(0, 10)
+    gameManager.addCurrentScoreForPlayer(0, 10)
     
-    logResult(gameManager.players[0].score, 10)
+    logResult(gameManager.players[0].scoreCurrent, 10)
   },
 
   () => {
-    logDescription('GameManager.addScoreToPlayer(1, 5) adds 5 points to second player')
+    logDescription('GameManager.addCurrentScoreForPlayer(1, 5) adds 5 points to second player')
     
     const gameManager = new GameManager()
-    gameManager.addScoreToPlayer(1, 5)
+    gameManager.addCurrentScoreForPlayer(1, 5)
     
-    logResult(gameManager.players[1].score, 5)
+    logResult(gameManager.players[1].scoreCurrent, 5)
+  },
+
+  () => {
+    logDescription('GameManager.setLastRollForPlayer(0, 2) sets a roll of 2 for player 1')
+    
+    const gameManager = new GameManager()
+    gameManager.setLastRollForPlayer(0, 2)
+    
+    logResult(gameManager.players[0].lastRoll, 2)
+  },
+
+  () => {
+    logDescription('GameManager.setLastRollForPlayer(1, 5) sets a roll of 6 for player 2')
+    
+    const gameManager = new GameManager()
+    gameManager.setLastRollForPlayer(1, 6)
+    
+    logResult(gameManager.players[1].lastRoll, 6)
   },
 
   () => {
