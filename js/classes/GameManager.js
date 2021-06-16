@@ -21,6 +21,14 @@ class GameManager {
     this.players[player].lastRoll = roll
   }
 
+  holdPlayer (player) {
+    const current = this.players[player].scoreCurrent
+
+    this.players[player].scoreTotal += current
+    this.players[player].scoreCurrent = 0
+    this.players[player].lastRoll = 0
+  }
+
   rollDice () {
     return Math.floor(Math.random() * 6) + 1
   }

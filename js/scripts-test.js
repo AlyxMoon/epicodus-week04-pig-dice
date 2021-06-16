@@ -126,6 +126,22 @@ const tests = [
   },
 
   () => {
+    logDescription('GameManager.holdPlayer(0) updates the player 1 total score with current score, and wipes current values')
+    
+    const gameManager = new GameManager()
+    gameManager.addCurrentScoreForPlayer(0, 6)
+    gameManager.setLastRollForPlayer(0, 6)
+    gameManager.holdPlayer(0)
+
+    let isValid = true
+    isValid = isValid && gameManager.players[0].scoreTotal === 6
+    isValid = isValid && gameManager.players[0].scoreCurrent === 0
+    isValid = isValid && gameManager.players[0].lastRoll === 0
+    
+    logResult(gameManager.players[0], gameManager.players[0], isValid)
+  },
+
+  () => {
     logDescription('GameManager.rollDice() returns a number between 1 and 6')
     
     let hadInvalidResult = false

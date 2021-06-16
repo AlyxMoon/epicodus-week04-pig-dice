@@ -1,10 +1,14 @@
 
 function updatePlayerDisplay (gameManager) {
+  $('#player-1 .total')
+    .text(gameManager.players[0].scoreTotal)
   $('#player-1 .current')
     .text(gameManager.players[0].scoreCurrent)
   $('#player-1 .roll')
     .text(gameManager.players[0].lastRoll)
 
+  $('#player-2 .total')
+    .text(gameManager.players[1].scoreTotal)
   $('#player-2 .current')
     .text(gameManager.players[1].scoreCurrent)
   $('#player-2 .roll')
@@ -24,6 +28,8 @@ const main = () => {
   })
 
   $('#player-1 .button-hold').on('click', () => {
+    gameManager.holdPlayer(0)
+    updatePlayerDisplay(gameManager)
   })
 
   $('#player-2 .button-roll').on('click', () => {
@@ -36,7 +42,8 @@ const main = () => {
   })
 
   $('#player-2 .button-hold').on('click', () => {
-    alert('hold for player 2')
+    gameManager.holdPlayer(1)
+    updatePlayerDisplay(gameManager)
   })
 }
 
