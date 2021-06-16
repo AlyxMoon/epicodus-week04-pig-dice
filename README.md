@@ -99,6 +99,33 @@ Expected: gameManager.players[1].lastRoll === 6
 ```
 
 ```
+Test: GameManager.holdPlayer(0) updates the player 1 total score with current score, and wipes current values
+Code:
+const gameManager = new GameManager()
+gameManager.addCurrentScoreForPlayer(0, 6)
+gameManager.setLastRollForPlayer(0, 6)
+gameManager.holdPlayer(0)
+Expected: gameManager.players[0] === { scoreTotal: 6, scoreCurrent: 0, lastRoll: 0 }
+```
+
+```
+Test: GameManager.holdPlayer(0) will switch the active player to player 2
+Code:
+const gameManager = new GameManager()
+gameManager.holdPlayer(0)
+Expected: gameManager.activePlayer === 1
+```
+
+```
+Test: GameManager.holdPlayer(1) will switch the active player to player 1
+Code:
+const gameManager = new GameManager()
+gameManager.activePlayer = 1
+gameManager.holdPlayer(1)
+Expected: gameManager.activePlayer === 0
+```
+
+```
 Test: GameManager.rollDice() gives a number between 1 and 6
 Code:
 const gameManager = new GameManager()

@@ -142,6 +142,25 @@ const tests = [
   },
 
   () => {
+    logDescription('GameManager.holdPlayer(0) will switch the active player to player 2')
+    
+    const gameManager = new GameManager()
+    gameManager.holdPlayer(0)
+    
+    logResult(gameManager.activePlayer, 1)
+  },
+
+  () => {
+    logDescription('GameManager.holdPlayer(1) will switch the active player to player 1')
+    
+    const gameManager = new GameManager()
+    gameManager.activePlayer = 1
+    gameManager.holdPlayer(1)
+    
+    logResult(gameManager.activePlayer, 0)
+  },
+
+  () => {
     logDescription('GameManager.rollDice() returns a number between 1 and 6')
     
     let hadInvalidResult = false

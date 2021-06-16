@@ -13,6 +13,13 @@ class GameManager {
     }
   }
 
+  setNextActivePlayer () {
+    this.activePlayer++
+    if (this.activePlayer >= this.players.length) {
+      this.activePlayer = 0
+    }
+  }
+
   addCurrentScoreForPlayer(player, score) {
     this.players[player].scoreCurrent += score
   }
@@ -27,6 +34,8 @@ class GameManager {
     this.players[player].scoreTotal += current
     this.players[player].scoreCurrent = 0
     this.players[player].lastRoll = 0
+
+    this.setNextActivePlayer()
   }
 
   rollDice () {
