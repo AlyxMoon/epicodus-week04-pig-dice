@@ -181,6 +181,16 @@ const tests = [
       logResult('1 - 6', '1 - 6')
     }
   },
+
+  () => {
+    logDescription('GameManager.shouldEndTurn() will return true if active player rolled a 0 last')
+    
+    const gameManager = new GameManager()
+    gameManager.setLastRollForPlayer(0, 1)
+    gameManager.shouldEndTurn()
+    
+    logResult(gameManager.shouldEndTurn(), true)
+  },
 ]
 
 function runTests () {

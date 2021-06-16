@@ -132,3 +132,11 @@ const gameManager = new GameManager()
 gameManager.rollDice()
 Expected: a number between 1 and 6
 ```
+
+```
+Test: GameManager.shouldEndTurn() will return true if active player rolled a 1 last
+Code:
+const gameManager = new GameManager()
+gameManager.setLastRollForPlayer(0, 1)
+Expected: gameManager.shouldEndTurn() === true
+```

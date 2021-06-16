@@ -38,6 +38,12 @@ class GameManager {
     this.setNextActivePlayer()
   }
 
+  shouldEndTurn ()  {
+    const player = this.players[this.activePlayer]
+
+    return player.lastRoll === 1
+  }
+
   rollDice () {
     return Math.floor(Math.random() * 6) + 1
   }

@@ -6,6 +6,11 @@ function setUpEventWatchers (gameManager) {
     gameManager.setLastRollForPlayer(0, roll)
     gameManager.addCurrentScoreForPlayer(0, roll)
 
+    if (gameManager.shouldEndTurn()) {
+      gameManager.players[0].scoreCurrent = 0
+      gameManager.holdPlayer(0)
+    }
+
     updatePlayerDisplay(gameManager)
   })
 
@@ -19,6 +24,11 @@ function setUpEventWatchers (gameManager) {
 
     gameManager.setLastRollForPlayer(1, roll)
     gameManager.addCurrentScoreForPlayer(1, roll)
+
+    if (gameManager.shouldEndTurn()) {
+      gameManager.players[1].scoreCurrent = 0
+      gameManager.holdPlayer(1)
+    }
 
     updatePlayerDisplay(gameManager)
   })
