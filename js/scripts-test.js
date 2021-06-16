@@ -88,6 +88,24 @@ const tests = [
     
     logResult(actual, expected)
   },
+
+  () => {
+    logDescription('GameManager.addScoreToPlayer(0, 10) adds 10 points to first player')
+    
+    const gameManager = new GameManager()
+    gameManager.addScoreToPlayer(0, 10)
+    
+    logResult(gameManager.players[0].score, 10)
+  },
+
+  () => {
+    logDescription('GameManager.addScoreToPlayer(1, 5) adds 5 points to second player')
+    
+    const gameManager = new GameManager()
+    gameManager.addScoreToPlayer(1, 5)
+    
+    logResult(gameManager.players[1].score, 5)
+  },
 ]
 
 function runTests () {

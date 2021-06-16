@@ -65,3 +65,19 @@ const gameManager = new GameManager()
 gameManager.setActivePlayer(2)
 Expected: gameManager.activePlayer === 0
 ```
+
+```
+Test: GameManager.addScoreToPlayer(0, 10) adds 10 points to first player
+Code:
+const gameManager = new GameManager()
+gameManager.addScoreToPlayer(0, 10)
+Expected: gameManager.players[0].score === 10
+```
+
+```
+Test: GameManager.addScoreToPlayer(1, 5) adds 5 points to second player
+Code:
+const gameManager = new GameManager()
+gameManager.addScoreToPlayer(1, 5)
+Expected: gameManager.players[1].score === 5
+```

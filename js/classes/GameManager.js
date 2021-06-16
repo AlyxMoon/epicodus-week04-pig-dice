@@ -12,4 +12,8 @@ class GameManager {
       this.activePlayer = player
     }
   }
+
+  addScoreToPlayer(player, score) {
+    this.players[player].score += score
+  }
 }
