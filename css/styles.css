@@ -1,0 +1,9 @@
+dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 5px 10px;
+}
+
+dt {
+  text-align: right;
+}

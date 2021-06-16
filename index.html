@@ -21,9 +21,72 @@
   <main class="container my-3">
 
     <section class="row">
+      <div class="col">
+        <div class="card" id="player-1">
+          <header class="card-title">
+            <h3 class="card-header">Player One</h3>
+          </header>
+
+          <div class="card-body">
+            <dl>
+              <dt>Total Score</dt>
+              <dd class="total"></dd>
+
+              <dt>Current Score</dt>
+              <dd class="current"></dd>
+
+              <dt>Last Roll</dt>
+              <dd class="roll"></dd>
+            </dl>
+          </div>
+
+          <footer class="card-footer btn-group">
+            <button 
+              class="btn btn-primary button-roll"
+            >Roll</button>
+            <button 
+              class="btn btn-warning button-hold"
+            >Hold</button>
+          </footer>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card" id="player-2">
+          <header class="card-title">
+            <h3 class="card-header">Player Two</h3>
+          </header>
+
+          <div class="card-body">
+            <dl>
+              <dt>Total Score</dt>
+              <dd class="total"></dd>
+
+              <dt>Current Score</dt>
+              <dd class="current"></dd>
+
+              <dt>Last Roll</dt>
+              <dd class="roll"></dd>
+            </dl>
+          </div>
+
+          <footer class="card-footer btn-group">
+            <button 
+              class="btn btn-primary button-roll"
+            >Roll</button>
+            <button 
+              class="btn btn-warning button-hold"
+            >Hold</button>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+    <section class="row">
       <header>
         <h2>Tests</h2>
       </header>
+
       <ul id="output-tests"></ul>
     </section>
   </main>
