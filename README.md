@@ -10,3 +10,33 @@
 
 ## Live Site
 [https://alyxmoon.github.io/epicodus-week04-pig-dice/](https://alyxmoon.github.io/epicodus-week04-pig-dice/)
+
+## Outline
+
+Overall game loop:
+1. game starts with both players initialized
+    - both players have a score of 0
+2. Set player one as the active player
+3. Allow player one to do a turn
+4. Turn logic is as follows:
+    - Player can either "hold" or "roll"
+    - if player rolls, get a dice result, 1-6
+      - if result is 2-6, add to the player's turn score, and repeat turn logic
+      - if result if 1, set turn score to 0 and skip to step 5
+    - if player holds, add turn score to their overall score and go to next step
+5. Set player two as the active player
+6. Do turn logic as per step 4
+7. Repeat steps 2-6, until a player has reached a total score of 100 after ending their turn
+8. Once a player has reached 100, mark them as the winner and end the game
+
+
+## Tests
+
+### Describe class GameManager
+
+```
+Test: A newly created GameManager class starts with correct properties initialized
+Code: new GameManager()
+Expected: GameManager { activePlayer: 0, players: [{ score: 0 }, { score: 0} ]}
+```
+
