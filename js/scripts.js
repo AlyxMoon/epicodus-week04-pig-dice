@@ -1,40 +1,12 @@
 
 function setUpEventWatchers (gameManager) {
-  $('#player-1 .button-roll').on('click', () => {
-    const roll = gameManager.rollDice()
-
-    gameManager.setLastRollForPlayer(0, roll)
-    gameManager.addCurrentScoreForPlayer(0, roll)
-
-    if (gameManager.shouldEndTurn()) {
-      gameManager.players[0].scoreCurrent = 0
-      gameManager.holdPlayer(0)
-    }
-
+  $('.button-roll').on('click', () => {
+    gameManager.doMove()
     updatePlayerDisplay(gameManager)
   })
 
-  $('#player-1 .button-hold').on('click', () => {
-    gameManager.holdPlayer(0)
-    updatePlayerDisplay(gameManager)
-  })
-
-  $('#player-2 .button-roll').on('click', () => {
-    const roll = gameManager.rollDice()
-
-    gameManager.setLastRollForPlayer(1, roll)
-    gameManager.addCurrentScoreForPlayer(1, roll)
-
-    if (gameManager.shouldEndTurn()) {
-      gameManager.players[1].scoreCurrent = 0
-      gameManager.holdPlayer(1)
-    }
-
-    updatePlayerDisplay(gameManager)
-  })
-
-  $('#player-2 .button-hold').on('click', () => {
-    gameManager.holdPlayer(1)
+  $('.button-hold').on('click', () => {
+    gameManager.holdPlayer(gameManager.activePlayer)
     updatePlayerDisplay(gameManager)
   })
 }
@@ -44,12 +16,24 @@ function updatePlayerDisplay (gameManager) {
   const player1 = gameManager.players[0]
   const player2 = gameManager.players[1]
 
-  if (activePlayer === 0) {
+  console.log(gameManager)
+  if (gameManager.gameOver) {
+    $('button').attr('disabled', '')
+
+    if (player1.scoreTotal >= 100) {
+      $('#player-1 .card-body').text('You win!')
+      $('#player-2 .card-body').text('You lose!')
+    }
+
+    if (player2.scoreTotal >= 100) {
+      $('#player-1 .card-body').text('You lose!')
+      $('#player-2 .card-body').text('You win!')
+    }
+
+  } else if (activePlayer === 0) {
     $('#player-2 button').attr('disabled', '')
     $('#player-1 button').removeAttr('disabled')
-  }
-
-  if (activePlayer === 1) {
+  } else if (activePlayer === 1) {
     $('#player-1 button').attr('disabled', '')
     $('#player-2 button').removeAttr('disabled')
   }

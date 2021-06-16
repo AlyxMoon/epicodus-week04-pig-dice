@@ -5,6 +5,20 @@ class GameManager {
       { scoreCurrent: 0, scoreTotal: 0 },
       { scoreCurrent: 0, scoreTotal: 0 },
     ]
+
+    this.gameOver = false
+  }
+
+  doMove () {
+    const roll = this.rollDice()
+
+    this.setLastRollForPlayer(this.activePlayer, roll)
+    this.addCurrentScoreForPlayer(this.activePlayer, roll)
+
+    if (this.shouldEndTurn()) {
+      this.setCurrentScoreForPlayer(this.activePlayer, 0)
+      this.holdPlayer(this.activePlayer)
+    }
   }
 
   setActivePlayer (player) {
@@ -20,8 +34,12 @@ class GameManager {
     }
   }
 
-  addCurrentScoreForPlayer(player, score) {
+  addCurrentScoreForPlayer (player, score) {
     this.players[player].scoreCurrent += score
+  }
+
+  setCurrentScoreForPlayer (player) {
+    this.players[player].scoreCurrent = 0
   }
 
   setLastRollForPlayer (player, roll) {
@@ -34,6 +52,11 @@ class GameManager {
     this.players[player].scoreTotal += current
     this.players[player].scoreCurrent = 0
     this.players[player].lastRoll = 0
+
+    if (this.players[player].scoreTotal >= 100) {
+      this.gameOver = true
+      return
+    }
 
     this.setNextActivePlayer()
   }
