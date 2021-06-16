@@ -52,6 +52,42 @@ const tests = [
 
     logResult(actual, expected, isValid)
   },
+
+  () => {
+    
+    const gameManager = new GameManager()
+    gameManager.setActivePlayer(0)
+    
+    const actual = gameManager.activePlayer
+    const expected = 0
+    
+    logDescription('GameManager.setActivePlayer(0) updates the activePlayer accordingly')
+    logResult(actual, expected)
+  },
+
+  () => {
+    logDescription('GameManager.setActivePlayer(1) updates the activePlayer accordingly')
+    
+    const gameManager = new GameManager()
+    gameManager.setActivePlayer(1)
+    
+    const actual = gameManager.activePlayer
+    const expected = 1
+    
+    logResult(actual, expected)
+  },
+
+  () => {
+    logDescription('GameManager.setActivePlayer(2) does not change the activePlayer')
+    
+    const gameManager = new GameManager()
+    gameManager.setActivePlayer(2)
+    
+    const actual = gameManager.activePlayer
+    const expected = 0
+    
+    logResult(actual, expected)
+  },
 ]
 
 function runTests () {

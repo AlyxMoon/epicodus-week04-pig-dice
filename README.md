@@ -40,3 +40,28 @@ Code: new GameManager()
 Expected: GameManager { activePlayer: 0, players: [{ score: 0 }, { score: 0} ]}
 ```
 
+#### Describe GameManager.setActivePlayer ()
+
+```
+Test: GameManager.setActivePlayer(0) updates the activePlayer accordingly
+Code:
+const gameManager = new GameManager()
+gameManager.setActivePlayer(0)
+Expected: gameManager.activePlayer === 0
+```
+
+```
+Test: GameManager.setActivePlayer(1) updates the activePlayer accordingly
+Code:
+const gameManager = new GameManager()
+gameManager.setActivePlayer(1)
+Expected: gameManager.activePlayer === 1
+```
+
+```
+Test: GameManager.setActivePlayer(2) does not change the activePlayer
+Code:
+const gameManager = new GameManager()
+gameManager.setActivePlayer(2)
+Expected: gameManager.activePlayer === 0
+```

@@ -6,4 +6,10 @@ class GameManager {
       { score: 0 },
     ]
   }
+
+  setActivePlayer (player) {
+    if (player < this.players.length) {
+      this.activePlayer = player
+    }
+  }
 }
