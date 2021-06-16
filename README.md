@@ -81,3 +81,11 @@ const gameManager = new GameManager()
 gameManager.addScoreToPlayer(1, 5)
 Expected: gameManager.players[1].score === 5
 ```
+
+```
+Test: GameManager.rollDice() gives a number between 1 and 6
+Code:
+const gameManager = new GameManager()
+gameManager.rollDice()
+Expected: a number between 1 and 6
+```

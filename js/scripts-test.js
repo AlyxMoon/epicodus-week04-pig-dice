@@ -106,6 +106,28 @@ const tests = [
     
     logResult(gameManager.players[1].score, 5)
   },
+
+  () => {
+    logDescription('GameManager.rollDice() returns a number between 1 and 6')
+    
+    let hadInvalidResult = false
+
+    const gameManager = new GameManager()
+    for (let i = 0; i < 1000; i++) {
+      const roll = gameManager.rollDice()
+
+      if (roll < 1 || roll > 6) {
+        hadInvalidResult = roll
+        break
+      }
+    }
+    
+    if (hadInvalidResult !== false) {
+      logResult(hadInvalidResult, '1 - 6')
+    } else {
+      logResult('1 - 6', '1 - 6')
+    }
+  },
 ]
 
 function runTests () {

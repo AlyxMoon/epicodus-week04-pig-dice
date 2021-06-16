@@ -16,4 +16,8 @@ class GameManager {
   addScoreToPlayer(player, score) {
     this.players[player].score += score
   }
+
+  rollDice () {
+    return Math.floor(Math.random() * 6) + 1
+  }
 }
