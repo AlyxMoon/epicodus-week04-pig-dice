@@ -1,7 +1,14 @@
 
+const waitFor = (time = 1000) => {
+  return new Promise(resolve => window.setTimeout(resolve, time))
+}
+
 function setUpEventWatchers (gameManager) {
-  $('.button-roll').on('click', () => {
-    gameManager.doMove()
+  $('.button-roll').on('click', async () => {
+    const roll = gameManager.rollDice()
+    await simulateRollingDice(gameManager, roll)
+
+    gameManager.doMove(roll)
     updatePlayerDisplay(gameManager)
   })
 
@@ -13,13 +20,16 @@ function setUpEventWatchers (gameManager) {
   $('#input-toggle-tests').on('change', () => {
     $('.test-section, .main-section').toggleClass('d-none')
   })
+}
 
-  $('#roll1').on('click', function () { $('.dice').attr('data-roll', 1) })
-  $('#roll2').on('click', function () { $('.dice').attr('data-roll', 2) })
-  $('#roll3').on('click', function () { $('.dice').attr('data-roll', 3) })
-  $('#roll4').on('click', function () { $('.dice').attr('data-roll', 4) })
-  $('#roll5').on('click', function () { $('.dice').attr('data-roll', 5) })
-  $('#roll6').on('click', function () { $('.dice').attr('data-roll', 6) })
+async function simulateRollingDice (gameManager, finalRoll) {
+  const activePlayer = gameManager.activePlayer
+
+  $(`#player-${activePlayer + 1} button`).attr('disabled', '')
+  $(`#player-${activePlayer + 1} .dice`).attr('data-roll', finalRoll)
+
+  await waitFor(500)
+  $(`#player-${activePlayer + 1} button`).removeAttr('disabled')
 }
 
 function updatePlayerDisplay (gameManager) {
@@ -27,7 +37,6 @@ function updatePlayerDisplay (gameManager) {
   const player1 = gameManager.players[0]
   const player2 = gameManager.players[1]
 
-  console.log(gameManager)
   if (gameManager.gameOver) {
     $('button').attr('disabled', '')
 
@@ -51,11 +60,11 @@ function updatePlayerDisplay (gameManager) {
   
   $('#player-1 .total').text(player1.scoreTotal)
   $('#player-1 .current').text(player1.scoreCurrent)
-  $('#player-1 .roll').text(player1.lastRoll)
+  // $('#player-1 .roll').text(player1.lastRoll)
 
   $('#player-2 .total').text(player2.scoreTotal)
   $('#player-2 .current').text(player2.scoreCurrent)
-  $('#player-2 .roll').text(player2.lastRoll)
+  // $('#player-2 .roll').text(player2.lastRoll)
 }
 
 const main = () => {

@@ -9,8 +9,8 @@ class GameManager {
     this.gameOver = false
   }
 
-  doMove () {
-    const roll = this.rollDice()
+  doMove (rollForPlayer) {
+    const roll = rollForPlayer || this.rollDice()
 
     this.setLastRollForPlayer(this.activePlayer, roll)
     this.addCurrentScoreForPlayer(this.activePlayer, roll)
