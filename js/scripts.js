@@ -24,12 +24,24 @@ function setUpEventWatchers (gameManager) {
 
 async function simulateRollingDice (gameManager, finalRoll) {
   const activePlayer = gameManager.activePlayer
+  const playerSelector = `#player-${activePlayer + 1}`
 
-  $(`#player-${activePlayer + 1} button`).attr('disabled', '')
-  $(`#player-${activePlayer + 1} .dice`).attr('data-roll', finalRoll)
+  const elDice = $(`${playerSelector} .dice`)
+  const elButtons = $(`${playerSelector} button`)
 
-  await waitFor(500)
-  $(`#player-${activePlayer + 1} button`).removeAttr('disabled')
+  elButtons.attr('disabled', '')
+  elDice.addClass('rolling')
+
+  for (let i = 0; i < 5; i++) {
+    const intermediateRoll = gameManager.rollDice()
+    elDice.attr('data-roll', intermediateRoll)
+    await waitFor(150)
+  }
+
+  elDice.attr('data-roll', finalRoll)
+  elDice.removeClass('rolling')
+  await waitFor(400)
+  elButtons.removeAttr('disabled')
 }
 
 function updatePlayerDisplay (gameManager) {
