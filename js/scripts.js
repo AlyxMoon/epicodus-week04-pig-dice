@@ -9,6 +9,10 @@ function setUpEventWatchers (gameManager) {
     gameManager.holdPlayer(gameManager.activePlayer)
     updatePlayerDisplay(gameManager)
   })
+
+  $('#input-toggle-tests').on('change', () => {
+    $('.test-section, .main-section').toggleClass('d-none')
+  })
 }
 
 function updatePlayerDisplay (gameManager) {

@@ -18,9 +18,42 @@
   <title>Pig Dice</title>
 </head>
 <body>
+  <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a href="" class="navbar-brand d-inline-flex align-items-center">
+        <img class="" src="favicon.ico" />
+        <h1 class="h2 my-0 ms-3">Pig Dice</h1>
+      </a>
+
+      <ul class="navbar-nav gap-2">
+        <li class="navbar-item">
+          <a 
+            class="nav-link"
+            href="https://github.com/AlyxMoon/epicodus-week04-pig-dice/"
+            target="_blank">
+            Github Repo
+          </a>
+        </li>
+
+        <li class="navbar-item d-flex align-items-center">
+          <div class="form-check form-switch text-light m-0">
+            <label for="input-toggle-tests">
+              <input
+                id="input-toggle-tests"
+                class="form-check-input" 
+                type="checkbox" 
+              />
+              Test Mode
+            </label>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <main class="container my-3">
 
-    <section class="row">
+    <section class="row main-section">
       <div class="col">
         <div class="card" id="player-1">
           <header class="card-title">
@@ -82,7 +115,7 @@
       </div>
     </section>
 
-    <section class="row">
+    <section class="row test-section d-none">
       <header>
         <h2>Tests</h2>
       </header>
