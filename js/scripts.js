@@ -13,6 +13,13 @@ function setUpEventWatchers (gameManager) {
   $('#input-toggle-tests').on('change', () => {
     $('.test-section, .main-section').toggleClass('d-none')
   })
+
+  $('#roll1').on('click', function () { $('.dice').attr('data-roll', 1) })
+  $('#roll2').on('click', function () { $('.dice').attr('data-roll', 2) })
+  $('#roll3').on('click', function () { $('.dice').attr('data-roll', 3) })
+  $('#roll4').on('click', function () { $('.dice').attr('data-roll', 4) })
+  $('#roll5').on('click', function () { $('.dice').attr('data-roll', 5) })
+  $('#roll6').on('click', function () { $('.dice').attr('data-roll', 6) })
 }
 
 function updatePlayerDisplay (gameManager) {

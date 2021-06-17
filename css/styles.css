@@ -16,13 +16,35 @@ dd {
   margin: 0;
 }
 
+.dice-wrapper {
+  perspective: 720;
+  -webkit-perspective: 720; 
+  /* transform: translateZ(-100px); */
+
+  margin: 0 auto;
+}
+
 .dice {
-  margin: 20px;
+  margin: 20px auto;
+  height: 150px;
+  width: 150px;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+
+  transition: transform 0.5s;
+}
+
+.dice[data-roll="2"] {
+  transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
 }
 
 .dice-side {
   height: 100px;
   width: 100px;
+  padding: 10px;
 
   background-color: #DDD;
   border: 1px solid black;
@@ -32,11 +54,38 @@ dd {
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 10px;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
 
-  padding: 10px;
-
+  position: absolute;
 }
+
+.dice-side[data-side="1"] {
+  /* display: none; */
+  transform: rotate3d(0, 0, 0, 90deg) translateZ(50px);
+}
+
+.dice-side[data-side="2"] {
+  /* display: none; */
+  /* transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg); */
+  transform: rotate3d(-1, 0, 0, 90deg) translateZ(50px);
+}
+
+.dice-side[data-side="3"] {
+  display: none;
+}
+
+.dice-side[data-side="4"] {
+  display: none;
+}
+
+.dice-side[data-side="5"] {
+  display: none;
+}
+
+.dice-side[data-side="6"] {
+  display: none;
+}
+
 
 .dice .dot {
   background-color: black;
